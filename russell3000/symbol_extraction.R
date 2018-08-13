@@ -3,7 +3,8 @@ library(readxl)
 X <- read_excel("stock_predictions/own_prediction/russell3000/ru3000_membershiplist_20180625.xlsx")
 View(X)
 
-symbols = c(as.matrix(X[,3])[,1],as.matrix(X[,7])[,1])
+symbols = as.matrix(X[,c(3,7:8)])
+dim(symbols) = NULL
 symbols = symbols[-which(symbols=="Ticker")]
 symbols = symbols[!is.na(symbols)]
 symbols = sort(symbols)
