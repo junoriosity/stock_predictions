@@ -12,12 +12,17 @@ message = [line.rstrip('\n') for line in f]
 fetch_list.extend(message)
 store_file_list.extend(message)
 
+start_pos = 0
+for i in range(len(fetch_list)):
+    store_path = '/Users/ahsentob/stock_predictions/own_prediction/data_collect/historical_data/'+store_file_list[i]+'.csv'
+    if os.path.exists(store_path):
+        start_pos = i
 
 now = datetime.datetime.now()
 #time_list = [now.year-10,now.month,now.day]
 time_list = [2005,1,1]
 
-for i in range(len(fetch_list)):
+for i in range(start_pos,len(fetch_list)):
     store_path = '/Users/ahsentob/stock_predictions/own_prediction/data_collect/historical_data/'+store_file_list[i]+'.csv'
     if os.path.exists(store_path):
         continue
